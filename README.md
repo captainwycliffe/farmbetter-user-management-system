@@ -70,9 +70,6 @@ Retrieves users efficiently using **Firestore cursors**.
 ```
 GET https://localhost:3000/users?page=1&limit=10
 ```
-<h2>Creating a User</h2>
-<p>To create a user, send a <code>POST</code> request:</p>
-<img src="https://i.imghippo.com/files/yM6921IuM.png" alt="" border="0">
 
 
 
@@ -138,11 +135,16 @@ POST https://localhost:3000/webhook
 ```
 **Validations:**
 - Checks for **valid authorization token** (`Bearer SECRET_TOKEN`).
+<img src="https://i.imghippo.com/files/kXBe5277tdM.png" alt="" border="0">
+
 - Stores messages in **Firestore**.
 <img src="https://i.imghippo.com/files/BMMd7814yAE.png" alt="" border="0">
+
 - Sends **automated reply** if message contains "help".
 <img src="https://i.imghippo.com/files/GF6889FIU.png" alt="" border="0">
+
 - Implements **rate limiting** (5 requests/min per phone).
+<img src="https://i.imghippo.com/files/Hhz6905hAk.png" alt="" border="0">
 
 ---
 
@@ -150,7 +152,6 @@ POST https://localhost:3000/webhook
 - Uses **Firestore `onSnapshot()`** to listen for new messages.
 - Updates frontend **in real-time** when new messages arrive.
 
-*(Screenshot of Firestore updates attached)*
 
 ---
 
@@ -158,7 +159,7 @@ POST https://localhost:3000/webhook
 - **Token validation** ensures secure webhook requests.
 - **Exception filters** for Firestore and invalid payloads.
 
-*(Screenshot of error handling attached)*
+<img src="https://i.imghippo.com/files/nJB2189yg.png" alt="" border="0">
 
 ---
 
