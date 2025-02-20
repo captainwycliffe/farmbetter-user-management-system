@@ -71,8 +71,8 @@ GET https://localhost:3000/users?page=1&limit=10
 ```
 <h2>Creating a User</h2>
 <p>To create a user, send a <code>POST</code> request:</p>
-<img src="screenshots/get-all-users.png" alt="Get all User in Postman" >
-<img src="https://media.architecturaldigest.com/photos/66a951edce728792a48166e6/master/pass/GettyImages-955441104.jpg" alt="Get all User in Postman" >
+<img src="https://i.imghippo.com/files/yM6921IuM.png" alt="" border="0">
+
 
 
 ---
