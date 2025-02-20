@@ -23,6 +23,7 @@ This project is a **User Management System** with a **Webhook Integration** usin
 ## Project Setup and Firestore Integration
 - Initialized a **NestJS project** with a modular structure.
 - Configured **Firestore** integration using Firebase Admin SDK.
+<img src="https://i.imghippo.com/files/ASdl7459nLQ.png" alt="" border="0">
 
 ---
 
@@ -58,7 +59,7 @@ export class CreateUserDto {
 }
 ```
 
-*(Screenshot of Postman request attached)*
+<img src="https://i.imghippo.com/files/ySV6955Cpk.png" alt="" border="0">
 
 ---
 
@@ -84,7 +85,7 @@ Retrieves a specific user by ID.
 ```
 GET https://localhost:3000/users/123
 ```
-*(Screenshot attached)*
+<img src="https://i.imghippo.com/files/vojR3288atQ.png" alt="" border="0">
 
 ---
 
@@ -116,7 +117,7 @@ export class UpdateUserDto {
   phone?: string;
 }
 ```
-*(Screenshot attached)*
+<img src="https://i.imghippo.com/files/KjB8581VVk.png" alt="" border="0">
 
 ---
 
@@ -138,10 +139,10 @@ POST https://localhost:3000/webhook
 **Validations:**
 - Checks for **valid authorization token** (`Bearer SECRET_TOKEN`).
 - Stores messages in **Firestore**.
+<img src="https://i.imghippo.com/files/BMMd7814yAE.png" alt="" border="0">
 - Sends **automated reply** if message contains "help".
+<img src="https://i.imghippo.com/files/GF6889FIU.png" alt="" border="0">
 - Implements **rate limiting** (5 requests/min per phone).
-
-*(Screenshot of Postman request attached)*
 
 ---
 
@@ -170,5 +171,5 @@ POST https://localhost:3000/webhook
 - **GET /users pagination** validation.
 - **Webhook reply logic** (testing "help" response).
 
-*(Screenshot of passing tests attached)*
+<img src="https://i.imghippo.com/files/Zpk7377wxQ.png" alt="" border="0">
 
