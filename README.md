@@ -174,3 +174,227 @@ POST https://localhost:3000/webhook
 
 <img src="https://i.imghippo.com/files/Zpk7377wxQ.png" alt="" border="0">
 
+
+## Installation Guide
+
+### Prerequisites
+
+Ensure your system meets the following requirements:
+
+- **Node.js** (v16+ recommended)
+- **npm** (v8+ recommended) or **yarn**
+- **Postman** (for API testing)
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/captainwycliffe/farmbetter-user-management-system.git
+cd farmbetter-user-management-system
+```
+
+### Step 2: Install Dependencies
+
+```bash
+npm install
+```
+
+### Step 3: Configure Firebase
+
+1. Create a `.env` file and add the following environment variables:
+
+```
+FIREBASE_PROJECT_ID="farm-better-assesment"
+FIREBASE_PRIVATE_KEY='firebase-private-key'
+PORT=3000
+WEBHOOK_SECRET_TOKEN='webhook-secret-key'
+
+```
+
+### Step 4: Run the Application
+
+#### Development Mode (with auto-reload for changes)
+
+```bash
+npm run start:dev
+```
+
+#### Production Mode
+
+```bash
+npm start
+```
+
+### Step 5: Verify Running Application
+
+Once the app is running, verify it by checking:
+
+- **API is running on**: `http://localhost:3000`
+- **Firestore database is accessible**
+
+---
+
+## Testing the APIs using Postman
+
+### 1. User Management API
+
+#### a) Create a User (POST /users)
+
+- **URL**: `http://localhost:3000/users`
+- **Method**: POST
+- **Body (JSON format)**:
+  ```json
+  {
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "phone": "+1234567890"
+  }
+  ```
+- **Expected Response (201 Created)**:
+  ```json
+  {
+    "id": "generatedUserId",
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "phone": "+1234567890"
+  }
+  ```
+
+#### b) Fetch All Users (GET /users)
+
+- **URL**: `http://localhost:3000/users`
+- **Method**: GET
+- **Expected Response (200 OK)**:
+  ```json
+  [
+    {
+      "id": "generatedUserId",
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "phone": "+1234567890"
+    }
+  ]
+  ```
+
+#### c) Fetch a Single User (GET /users/{id})
+
+- **URL**: `http://localhost:3000/users/generatedUserId`
+- **Method**: GET
+- **Expected Response (200 OK)**:
+  ```json
+  {
+    "id": "generatedUserId",
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "phone": "+1234567890"
+  }
+  ```
+
+#### d) Update User (PATCH /users/{id})
+
+- **URL**: `http://localhost:3000/users/generatedUserId`
+- **Method**: PATCH
+- **Body (JSON format)**:
+  ```json
+  {
+    "name": "John Updated"
+  }
+  ```
+- **Expected Response (200 OK)**:
+  ```json
+  {
+    "id": "generatedUserId",
+    "name": "John Updated",
+    "email": "johndoe@example.com",
+    "phone": "+1234567890"
+  }
+  ```
+
+---
+
+### 2. Webhook API
+
+#### a) Send a Webhook Message (POST /webhook)
+
+- **URL**: `http://localhost:3000/webhook`
+- **Method**: POST
+- **Headers**:
+  - `Authorization`: `Bearer SECRET_TOKEN`
+- **Body (JSON format)**:
+  ```json
+  {
+    "message": "Hello",
+    "phone": "+1234567890"
+  }
+  ```
+- **Expected Response (200 OK)**:
+  ```json
+  {
+    "success": true
+  }
+  ```
+
+#### b) Automated Reply for Help Requests
+
+- **URL**: `http://localhost:3000/webhook`
+- **Method**: POST
+- **Headers**:
+  - `Authorization`: `Bearer SECRET_TOKEN`
+- **Body (JSON format)**:
+  ```json
+  {
+    "message": "help",
+    "phone": "+1234567890"
+  }
+  ```
+- **Expected Response (200 OK)**:
+  ```json
+  {
+    "reply": "Support contact: support@company.com"
+  }
+  ```
+
+---
+
+## Running Tests
+
+Run unit tests to verify API behavior:
+
+```bash
+npm run test
+```
+
+Run end-to-end tests for full API workflow:
+
+```bash
+npm run test:e2e
+```
+
+---
+
+## Troubleshooting
+
+### Common Issues & Fixes
+
+1. **Firebase Admin SDK Errors**
+
+   - Ensure the Firebase credentials JSON file is correctly referenced in `.env`.
+   - Restart the app after setting the correct path.
+
+2. **Webhook Authorization Failures**
+
+   - Use the correct **Bearer Token** in the `Authorization` header.
+   - Ensure the token matches the one in the `.env` file.
+
+3. **Postman Requests Not Working**
+
+   - Check if the API is running on `localhost:3000`.
+   - Use the correct HTTP methods (`GET`, `POST`, `PATCH`).
+
+---
+
+## Conclusion
+
+This guide covers everything needed to install, run, and test the project locally. Let me know if you need additional modifications! 🚀
+
+
+
